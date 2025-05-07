@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Shinra Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shinra Hub - Scripts</title>
   <style>
     * {
       margin: 0;
@@ -10,221 +11,229 @@
       box-sizing: border-box;
     }
 
-    body {
-      background: #000814;
-      color: #00b4d8;
+    body, html {
       font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      background-color: #000;
       overflow-x: hidden;
       position: relative;
     }
 
-    #stars {
+    /* Fundo de vídeo */
+    .background-video {
       position: fixed;
       top: 0;
       left: 0;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(#00b4d8 1px, transparent 1px);
-      background-size: 4px 4px;
-      animation: stars 200s linear infinite;
-      z-index: -1;
-      opacity: 0.15;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -2;
+      object-fit: cover;
     }
 
-    @keyframes stars {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-1000px, 1000px); }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
     }
 
     header {
-      padding: 30px;
-      text-align: center;
-      background: linear-gradient(to right, #000c1a, #001a33);
-      box-shadow: 0 0 30px #00b4d8;
-      border-bottom: 2px solid #00b4d8;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      color: #00b4d8;
-      text-shadow: 0 0 15px #00b4d8, 0 0 25px #0077b6;
-    }
-
-    nav {
+      background-color: transparent;
+      padding: 20px 50px;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 15px;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideTop 1s ease forwards;
     }
 
-    nav button {
-      background: none;
-      border: 2px solid #00b4d8;
-      color: #00b4d8;
-      padding: 10px 20px;
-      border-radius: 8px;
+    .logo {
+      font-size: 2rem;
+      color: #00aaff;
       font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
     }
 
-    nav button:hover, nav button.active {
-      background-color: #00b4d8;
-      color: #000;
-      box-shadow: 0 0 10px #00b4d8;
+    .owner {
+      font-size: 1rem;
+      color: #ccc;
     }
 
-    section {
-      display: none;
-      padding: 40px;
-      animation: fade 0.5s ease-in-out;
+    .hero {
+      text-align: center;
+      padding: 100px 20px 40px;
+      animation: fadeIn 1.5s ease forwards;
     }
 
-    section.active {
-      display: block;
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #00aaff;
     }
 
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .hero p {
+      font-size: 1.2rem;
+      color: #eee;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .scripts {
+    .categories {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
+      padding: 60px 20px;
     }
 
-    .script-card {
-      background: rgba(0, 8, 20, 0.92);
-      border: 1px solid #00b4d8;
-      border-radius: 10px;
+    .category {
+      background-color: #1a1a1aee;
+      border: 1px solid #00aaff30;
+      padding: 30px;
+      border-radius: 15px;
       width: 300px;
-      padding: 20px;
-      transition: 0.4s;
-    }
-
-    .script-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #00b4d8;
-    }
-
-    .script-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    .script-card h3 {
-      color: #90e0ef;
-      margin-bottom: 10px;
-    }
-
-    .script-card p {
-      color: #caf0f8;
-      font-size: 14px;
-    }
-
-    .script-card button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #0077b6;
-      border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .script-card button:hover {
-      background-color: #00b4d8;
-      box-shadow: 0 0 10px #00b4d8;
-    }
-
-    .dev-info {
+      transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
     }
 
-    .dev-info img {
-      width: 200px;
-      border-radius: 50%;
-      border: 3px solid #00b4d8;
+    .category:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px #00aaff80;
+    }
+
+    .category img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .category h3 {
+      color: #00aaff;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .category p {
+      color: #ccc;
+      font-size: 1rem;
       margin-bottom: 20px;
-      box-shadow: 0 0 20px #00b4d8;
+    }
+
+    .category a button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      background-color: #00aaff;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .category a button:hover {
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: rgba(0, 0, 40, 0.8);
-      color: #ffffff88;
-      font-size: 14px;
-      box-shadow: 0 -2px 10px #00b4d8;
+      color: #888;
+      background-color: transparent;
+    }
+
+    @keyframes slideTop {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .categories {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
 
-<div id="stars"></div>
+  <!-- Vídeo de fundo -->
+  <video autoplay muted loop class="background-video">
+    <source src="https://cdn.pixabay.com/vimeo/761781163/blue-flame-1280x720.mp4?width=640&hash=3de1b2de5c28ab1766fc460816a5e6f94909d1e2" type="video/mp4">
+    Seu navegador não suporta vídeo.
+  </video>
+  <div class="overlay"></div>
 
-<header>
-  <h1>Shinra Hub</h1>
-  <nav>
-    <button class="tab-btn active" onclick="showTab('scripts')">Scripts</button>
-    <button class="tab-btn" onclick="showTab('contato')">Fale Conosco</button>
-    <button class="tab-btn" onclick="showTab('dev')">Desenvolvedor</button>
-  </nav>
-</header>
+  <header>
+    <div class="logo">Shinra Hub</div>
+    <div class="owner">Desenvolvido por @wendel_fazcash</div>
+  </header>
 
-<section id="scripts" class="active">
-  <div class="scripts">
-    <div class="script-card">
-      <img src="https://i.imgur.com/GjG6L2L.png" alt="Blox Fruits Auto Farm">
-      <h3>Auto Farm - Blox Fruits</h3>
-      <p>Farm automatizado com Fast Attack, Auto Quest, teleport e Auto Haki.</p>
-      <button onclick="window.open('https://pastebin.com/raw/exemplo1')">Ver Script</button>
+  <section class="hero">
+    <h1 id="animated-text">Shinra Hub</h1>
+    <p>Quer dominar o jogo do seu jeito? Com nossos scripts exclusivos para Brookhaven, Blox fruits, Blue Lock rivais, você vai ter controle total da diversão!</p>
+  </section>
+
+  <section class="categories">
+    <div class="category">
+      <img src="https://cdn.discordapp.com/attachments/1365073910881587220/1369793772162126007/Screenshot_20250223_185439_Roblox-1.jpg?ex=681d275c&is=681bd5dc&hm=1b1b6dea724ea649e3c2c38f8ba8860732cc0f9d1338f63db5a39bacf6db3e39&" alt="Shinra Hub">
+      <h3>Shinra Hub : Blox Fruits</h3>
+      <p>Auto Farm Level inteligente, Farm de Boss, Haki, Frutas e muito mais
+ Sistema anti-ban seguro e otimizado</p>
+      <a href="https://seulink1.com"><button>Adquirir Script</button></a>
     </div>
-    <div class="script-card">
-      <img src="https://i.imgur.com/xZKp5CL.png" alt="Doors ESP">
-      <h3>ESP e Teleport - Doors</h3>
-      <p>Visualize entidades, loot e se teleporte automaticamente entre salas.</p>
-      <button onclick="window.open('https://pastebin.com/raw/exemplo2')">Ver Script</button>
+    <div class="category">
+      <img src="https://cdn.discordapp.com/attachments/1365073910881587220/1369793771918590122/images_30.jpg?ex=681d275c&is=681bd5dc&hm=b473160fdc09469afaf3c700ecfde7a6a87ba993441467bc7b00a65abe00a123&" alt="Shinra Hub">
+      <h3>Shinra Hub : Blue Lock Rivais</h3>
+      <p>Auto Farm, Auto goal, Auto Win em partidas, evolução rápida Atualizado para as novas versões do jogo</p>
+      <a href="https://seulink2.com"><button>Adquirir Script</button></a>
     </div>
-  </div>
-</section>
+    <div class="category">
+      <img src="https://cdn.discordapp.com/attachments/1365073910881587220/1369793772556386424/download_15.jpg?ex=681d275c&is=681bd5dc&hm=34e8aed4e54853a9cd50679a1b3cd018423c9b6b171f6d06685b4fdef5d43c77&" alt="Shinra Hub : Brokhavem RP">
+      <h3>Shinra Hub : Brokhavem RP</h3>
+      <p>Comandos rápidos (fly, speed, troll, troll gui)
+Visual Mod (mude o mapa como quiser!)
+Spawn de carros e itens instantâneo Personalização de personagem avançada
+Sistema de Troll, seguro e fácil de usar.</p>
+      <a href="https://seulink3.com"><button>Adquirir Script</button></a>
+    </div>
+  </section>
 
-<section id="contato">
-  <h2>Fale Conosco</h2>
-  <p style="text-align:center;margin-top:20px;color:#90e0ef;">
-    Entre em contato via Discord: <strong>@ShinraDev</strong><br><br>
-    Ou envie um e-mail para: <strong>contato@shinrahub.xyz</strong>
-  </p>
-</section>
+  <footer>
+    © 2025 Shinra Hub - Todos os direitos reservados | Discord: <a href="https://discord.gg/Shinra Hub" target="_blank" style="color:#00aaff; text-decoration: none;">discord.gg/Shinra Hub</a>
+  </footer>
 
-<section id="dev">
-  <div class="dev-info">
-    <img src="https://i.imgur.com/yYRVUnJ.png" alt="Dev">
-    <h3>Desenvolvedor: ShinraDev</h3>
-    <p>Responsável por todos os sistemas, design e scripts do hub.</p>
-  </div>
-</section>
+  <script>
+    const title = document.getElementById('animated-text');
+    const text = "Shinra Hub";
+    let index = 0;
 
-<footer>
-  © 2025 Shinra Hub. Desenvolvido com estilo e desempenho.
-</footer>
+    function typeEffect() {
+      if (index < text.length) {
+        title.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+      }
+    }
 
-<script>
-  function showTab(tabId) {
-    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-    document.getElementById(tabId).classList.add("active");
-
-    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
-    event.target.classList.add("active");
-  }
-</script>
+    title.innerHTML = "";
+    setTimeout(typeEffect, 500);
+  </script>
 
 </body>
-    </html>
+</html>
