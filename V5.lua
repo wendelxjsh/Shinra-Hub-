@@ -26,8 +26,8 @@ local function S6_func()
 	S13_.BorderColor3 = Color3.fromRGB(255, 0, 0)
 	S13_.Position = UDim2.new(0.1021, 0, 0.0743, 0)
 	S13_.Size = UDim2.new(0, 59, 0, 49)
-	S13_.Image = "rbxassetid://82140212012109"
-	S13_.Visible = false
+	S13_.Image = "rbxassetid://124421424974800"
+	S13_.Visible = true
 
 	S11_.Name = "MainCorner"
 	S11_.CornerRadius = UDim.new(0, 9)
