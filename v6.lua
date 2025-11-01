@@ -22,8 +22,8 @@ local function S6_func()
 	S12_.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	S13_.Parent = S12_
-	S13_.BackgroundColor3 = Color3.fromRGB(255, 0, 255)
-	S13_.BorderColor3 = Color3.fromRGB(255, 0, 255)
+	S13_.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	S13_.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	S13_.Position = UDim2.new(0.1021, 0, 0.0743, 0)
 	S13_.Size = UDim2.new(0, 59, 0, 49)
 	S13_.Image = "rbxassetid://103512893937812"
