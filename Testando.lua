@@ -349,7 +349,7 @@ while wait(1) do
 	button.BackgroundColor3 = tab[tostring(_G.JoinerEnabled)]
 
 	if _G.JoinerEnabled == true then
-		local loadingstring = "_G.Webhook = ".."'"..tostring(_G.Webhook).."'".." _G.Rarity = ".."'"..(_G.Rarity or "Secret").."'".." _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('kkkk'))()"
+		local loadingstring = "_G.Webhook = ".."'"..tostring(_G.Webhook).."'".." _G.Rarity = ".."'"..(_G.Rarity or "Secret").."'".." _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('https://raw.githubusercontent.com/wendelxjsh/Shinra-Hub-/refs/heads/main/Testando.lua'))()"
 		queue_on_teleport(tostring(loadingstring))
 		hop()
 	end
