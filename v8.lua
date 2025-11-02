@@ -236,7 +236,7 @@ local themes = {
         Secondary = Color3.fromRGB(50, 0, 100),
         Text = Color3.fromRGB(255, 255, 255),
         TextSecondary = Color3.fromRGB(200, 200, 255),
-        Accent = Color3.fromRGB100, 0, 200)
+        Accent = Color3.fromRGB(100, 0, 200)
     },
     Light = {
         Background = Color3.fromRGB(240, 240, 240),
