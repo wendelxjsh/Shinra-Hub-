@@ -1,6 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 
-
 if game.CoreGui:FindFirstChild("AutoJoiner") then
 	return
 end
@@ -8,142 +7,55 @@ end
 local found = false
 local HttpService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
 
+-- 🧱 GUI
 local ThingsToCreate = {
 	["AutoJoiner"] = {
 		ClassName = "ScreenGui",
 		Enabled = true,
 		Name = "AutoJoiner",
-		Archivable = true,
 		Children = {
 			["TextButton"] = {
 				ClassName = "TextButton",
-				LayoutOrder = 0,
-				TextWrapped = true,
-				LineHeight = 1,
-				Active = true,
-				TextStrokeTransparency = 1,
-				SizeConstraint = Enum.SizeConstraint.RelativeXY,
-				ZIndex = 1,
-				BorderSizePixel = 0,
-				RichText = false,
-				Modal = false,
-				AutoButtonColor = true,
-				ContentText = "Auto Connect",
-				Transparency = 0,
-				TextYAlignment = Enum.TextYAlignment.Center,
-				TextScaled = true,
-				BackgroundColor3 = Color3.new(1, 0, 0),
-				Selectable = true,
-				AnchorPoint = Vector2.new(0, 0),
-				TextSize = 14,
-				Size = UDim2.new(0.119, 0,0.069, 0),
-				Archivable = true,
-				TextStrokeColor3 = Color3.new(0, 0, 0),
-				TextTransparency = 0,
-				ClipsDescendants = false,
-				BorderColor3 = Color3.new(0, 0, 0),
 				Text = "Auto Connect",
-				BackgroundTransparency = 0,
-				Position = UDim2.new(0.44, 0,0.913, 0),
-				Rotation = 0,
-				Font = Enum.Font.JosefinSans,
-				Style = Enum.ButtonStyle.Custom,
-				TextXAlignment = Enum.TextXAlignment.Center,
-				Visible = true,
-				MaxVisibleGraphemes = -1,
-				Name = "TextButton",
+				BackgroundColor3 = Color3.new(1, 0, 0),
 				TextColor3 = Color3.new(0, 0, 0),
+				Font = Enum.Font.JosefinSans,
+				TextScaled = true,
+				Size = UDim2.new(0.119, 0, 0.069, 0),
+				Position = UDim2.new(0.44, 0, 0.913, 0),
 				Children = {
 					["UICorner"] = {
 						ClassName = "UICorner",
-						Archivable = true,
-						Name = "UICorner",
-						CornerRadius = UDim.new(0.2,0)
+						CornerRadius = UDim.new(0.2, 0)
 					},
 					["UIStroke"] = {
 						ClassName = "UIStroke",
-						Enabled = true,
-						Transparency = 0,
-						Name = "UIStroke",
 						Color = Color3.new(0, 0, 0),
-						Archivable = true,
-						Thickness = 3,
-						ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+						Thickness = 3
 					},
 				},
 			},
 			["CREDITS"] = {
 				ClassName = "TextLabel",
-				LayoutOrder = 0,
-				TextWrapped = true,
-				LineHeight = 1,
-				Active = false,
-				TextStrokeTransparency = 1,
-				SizeConstraint = Enum.SizeConstraint.RelativeXY,
-				ZIndex = 1,
-				BorderSizePixel = 0,
-				RichText = false,
-				ContentText = "Rick Accounts Hub - Auto Joiner",
-				Transparency = 1,
-				TextYAlignment = Enum.TextYAlignment.Center,
-				TextScaled = true,
-				BackgroundColor3 = Color3.new(1, 1, 1),
-				Selectable = false,
-				AnchorPoint = Vector2.new(0, 0),
-				TextSize = 14,
-				Size = UDim2.new(0.26194146275520325, 0, 0.042016807943582535, 0),
-				ClipsDescendants = false,
-				Archivable = true,
+				Text = "Flames Hub Auto Joiner",
 				TextColor3 = Color3.new(1, 1, 1),
-				BorderColor3 = Color3.new(0, 0, 0),
-				Text = "Rick Accounts - Auto Joiner",
-				Visible = true,
-				TextTransparency = 0.5,
-				Rotation = 0,
 				Font = Enum.Font.JosefinSans,
+				TextScaled = true,
 				BackgroundTransparency = 1,
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextStrokeColor3 = Color3.new(0, 0, 0),
-				MaxVisibleGraphemes = -1,
-				Position = UDim2.new(0.013867488130927086, 0, 0.9394958019256592, 0),
-				Name = "CREDITS",
+				Position = UDim2.new(0.013, 0, 0.939, 0),
+				Size = UDim2.new(0.26, 0, 0.04, 0),
 			},
 			["SERVER"] = {
 				ClassName = "TextLabel",
-				LayoutOrder = 0,
-				TextWrapped = true,
-				LineHeight = 1,
-				Active = false,
-				TextStrokeTransparency = 1,
-				SizeConstraint = Enum.SizeConstraint.RelativeXY,
-				ZIndex = 1,
-				BorderSizePixel = 0,
-				RichText = false,
-				ContentText = "https://discord.gg/Wzx2AdSTWs",
-				Transparency = 1,
-				TextYAlignment = Enum.TextYAlignment.Center,
-				TextScaled = true,
-				BackgroundColor3 = Color3.new(1, 1, 1),
-				Selectable = false,
-				AnchorPoint = Vector2.new(0, 0),
-				TextSize = 14,
-				Size = UDim2.new(0.26194146275520325, 0, 0.042016807943582535, 0),
-				ClipsDescendants = false,
-				Archivable = true,
+				Text = "https://discord.gg/GVNYud4rNS",
 				TextColor3 = Color3.new(1, 1, 1),
-				BorderColor3 = Color3.new(0, 0, 0),
-				Text = "https://discord.gg/Wzx2AdSTWs",
-				Visible = true,
-				TextTransparency = 0.5,
-				Rotation = 0,
 				Font = Enum.Font.JosefinSans,
+				TextScaled = true,
 				BackgroundTransparency = 1,
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextStrokeColor3 = Color3.new(0, 0, 0),
-				MaxVisibleGraphemes = -1,
-				Position = UDim2.new(0.7249614596366882, 0, 0.9394958019256592, 0),
-				Name = "SERVER",
+				Position = UDim2.new(0.724, 0, 0.939, 0),
+				Size = UDim2.new(0.26, 0, 0.04, 0),
 			},
 		},
 	},
@@ -169,6 +81,7 @@ for _, data in pairs(ThingsToCreate) do
 	createGui(data, game.CoreGui)
 end
 
+-- 🟢 Função de envio com banner, logo, footer e contador de players
 function SendMessageEMBED(url, embed)
 	if not url then return end
 
@@ -176,7 +89,10 @@ function SendMessageEMBED(url, embed)
 	local headers = {
 		["Content-Type"] = "application/json"
 	}
+
 	local data = {
+		["username"] = "🔥 Flames Hub Auto Joiner 🔥",
+		["avatar_url"] = "https://i.imgur.com/wkZ2t8J.png",
 		["content"] = "@everyone",
 		["embeds"] = {
 			{
@@ -184,47 +100,18 @@ function SendMessageEMBED(url, embed)
 				["description"] = embed.description,
 				["color"] = embed.color,
 				["fields"] = embed.fields,
+				["image"] = { ["url"] = embed.banner or "https://i.imgur.com/VFh3yF2.png" },
+				["thumbnail"] = { ["url"] = embed.thumbnail or "https://i.imgur.com/wkZ2t8J.png" },
 				["footer"] = {
-					["text"] = embed.footer.text
-				},
-				["thumbnail"] = {
-					["url"] = embed.thumbnail
-				},
-				["author"] = {
-					["name"] = embed.author.name,
-					["icon_url"] = embed.author.icon_url
-				},
-				["timestamp"] = embed.timestamp
-			}
-		},
-		["components"] = {
-			{
-				["type"] = 1,
-				["components"] = {
-					{
-						["type"] = 2,
-						["label"] = "📱 Mobile COPY",
-						["style"] = 1,
-						["custom_id"] = "mobile_copy",
-						["emoji"] = {
-							["name"] = "📱"
-						}
-					},
-					{
-						["type"] = 2,
-						["label"] = "💻 PC COPY",
-						["style"] = 1,
-						["custom_id"] = "pc_copy",
-						["emoji"] = {
-							["name"] = "💻"
-						}
-					}
+					["text"] = embed.footer.text or "Flames Hub System",
+					["icon_url"] = embed.footer.icon or "https://i.imgur.com/wkZ2t8J.png"
 				}
 			}
 		}
 	}
+
 	local body = http:JSONEncode(data)
-	local response = request({
+	request({
 		Url = url,
 		Method = "POST",
 		Headers = headers,
@@ -232,6 +119,70 @@ function SendMessageEMBED(url, embed)
 	})
 end
 
+-- 🧠 Info do servidor atual
+local totalPlayers = #Players:GetPlayers()
+local serverId = game.JobId
+
+-- 🟣 Embed configurada
+local embed = {
+	["title"] = "🔥 FLAMES HUB - SAB AUTO JOINER 🔥",
+	["description"] = string.format("Servidor atual: **%d players**\nJob ID: `%s`\n\nSistema automático de conexão para servidores do **Flames Hub**!", totalPlayers, serverId),
+	["color"] = 15695665,
+	["fields"] = {
+		{
+			["name"] = "🐶 Brainrot Info",
+			["value"] = "```Procurando raridade...```",
+			["inline"] = false
+		},
+		{
+			["name"] = "☎ Join",
+			["value"] = "Entre pelo link:\n[Flames Hub Game](https://www.roblox.com/games/109253576074416/Flames-Hub-Joiner)\n```lua\nTeleportService:TeleportToPlaceInstance("..game.PlaceId..", \""..game.JobId.."\", LocalPlayer)\n```",
+			["inline"] = false
+		}
+	},
+	["footer"] = {
+		["text"] = "Feito com ❤️ por Flames Hub",
+		["icon"] = "https://i.imgur.com/wkZ2t8J.png"
+	},
+	["banner"] = "https://i.imgur.com/VFh3yF2.png",
+	["thumbnail"] = "https://i.imgur.com/wkZ2t8J.png"
+}
+
+local gui = game.CoreGui:WaitForChild("AutoJoiner")
+local button = gui:WaitForChild("TextButton")
+
+local tab = {
+	["true"] = Color3.new(0.133333, 1, 0),
+	["false"] = Color3.new(1, 0, 0)
+}
+
+button.MouseButton1Click:Connect(function()
+	_G.JoinerEnabled = not _G.JoinerEnabled
+end)
+
+-- 🎯 Detectar raridade e enviar embed
+for _, rarity in workspace:GetDescendants() do
+	if rarity:IsA("TextLabel") and rarity.Text == _G.Rarity and rarity.Name == "Rarity" then
+		local sound = Instance.new("Sound", game.ReplicatedStorage)
+		sound.Name = "FoundNotify"
+		sound.SoundId = "rbxassetid://4590662766"
+		sound.Volume = 10
+		sound:Play()
+
+		_G.JoinerEnabled = false
+		found = true
+
+		embed.fields[1]["value"] = "```"..rarity.Text.." - "..rarity.Parent.Mutation.Text.." "..rarity.Parent.DisplayName.Text.." ("..rarity.Parent.Generation.Text..")```"
+		SendMessageEMBED(_G.Webhook, embed)
+	end
+end
+
+if found and not _G.KeepTeleporting then
+	game.CoreGui:WaitForChild("AutoJoiner"):Destroy()
+	return
+end
+
+-- 🌎 Função de Server Hop
 local function hop()
 	print("ServerHop Working")
 
@@ -242,7 +193,6 @@ local function hop()
 
 	if not success then
 		warn("Error. Trying Again")
-
 		task.wait(10)
 		hop()
 		return
@@ -251,9 +201,10 @@ local function hop()
 	local body = HttpService:JSONDecode(req)
 
 	if body and body.data then
-		for i, v in next, body.data do
-			if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing < v.maxPlayers and v.id ~= game.JobId then
-				table.insert(servers, 1, v.id)
+		for _, v in next, body.data do
+			if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers)
+				and v.playing < v.maxPlayers and v.id ~= game.JobId then
+				table.insert(servers, v.id)
 			end
 		end
 	end
@@ -262,95 +213,16 @@ local function hop()
 		TeleportService:TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], game.Players.LocalPlayer)
 	else
 		hop()
-		warn("Couldn't find a server.")
 	end
 end
 
-local embed = {
-	["title"] = "🎯 **RICK ACCOUNTS - BRAINROT ENCONTRADO!** 🎯",
-	["description"] = "> ⚡ **Um brainrot raro foi detectado no servidor!** ⚡",
-	["color"] = 65280,
-	["thumbnail"] = {
-		["url"] = "https://i.imgur.com/xU9j9yL.png"
-	},
-	["author"] = {
-		["name"] = "Rick Accounts Auto Joiner",
-		["icon_url"] = "https://i.imgur.com/3nKq7e2.png"
-	},
-	["fields"] = {
-		{
-			["name"] = "🐕 **INFORMAÇÕES DO BRAINROT**",
-			["value"] = "```\nCarregando informações...\n```",
-			["inline"] = false
-		},
-		{
-			["name"] = "🆔 **SERVER ID**",
-			["value"] = "```"..game.JobId.."```",
-			["inline"] = true
-		},
-		{
-			["name"] = "👥 **PLAYERS**",
-			["value"] = "```"..#game.Players:GetPlayers().."/"..game.Players.MaxPlayers.."```",
-			["inline"] = true
-		},
-		{
-			["name"] = "📋 **COMANDOS PARA ENTRAR**",
-			["value"] = "**PC:** `game:GetService('TeleportService'):TeleportToPlaceInstance("..game.PlaceId..", \""..game.JobId.."\", game.Players.LocalPlayer)`\n\n**Mobile:** Use os botões abaixo para copiar",
-			["inline"] = false
-		}
-	},
-	["footer"] = {
-		["text"] = "Rick Accounts Hub • "..os.date("%d/%m/%Y %H:%M:%S")
-	},
-	["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ")
-}
-
-local gui = game.CoreGui:WaitForChild("AutoJoiner")
-local button = gui:WaitForChild("TextButton")
-
-local tab = {
-	["true"] = Color3.new(0.133333, 1, 0),
-	["false"] = Color3.new(1, 0, 0),
-	["nil"] = Color3.new(1, 0, 0)
-}
-
-button.MouseButton1Click:Connect(function()
-	_G.JoinerEnabled = not _G.JoinerEnabled
-end
-
-for _, rarity in workspace:GetDescendants() do
-	if rarity:IsA("TextLabel") and rarity.Text == _G.Rarity and rarity.Name == "Rarity" then
-		local sound = Instance.new("Sound",game.ReplicatedStorage)
-		sound.Name = "FoundNotify"
-		sound.SoundId = "rbxassetid://4590662766"
-		sound.Volume = 10
-
-		sound:Play()
-		_G.JoinerEnabled = false
-		found = true
-
-		-- Atualiza as informações do brainrot
-		embed.fields[1]["value"] = "```\n"..rarity.Text.." - "..rarity.Parent.Mutation.Text.." "..rarity.Parent.DisplayName.Text.." ("..rarity.Parent.Generation.Text..")".."\n```"
-		
-		-- Atualiza o campo de jogadores com informações em tempo real
-		embed.fields[3]["value"] = "```"..#game.Players:GetPlayers().."/"..game.Players.MaxPlayers.."```"
-		
-		SendMessageEMBED(_G.Webhook,embed)
-	end
-end
-
-if found and not _G.KeepTeleporting then
-	print("Destroying Menu")
-	game.CoreGui:WaitForChild("AutoJoiner"):Destroy()
-	return
-end
-
+-- ⚙️ Loop principal
 while wait(1) do
 	button.BackgroundColor3 = tab[tostring(_G.JoinerEnabled)]
 
-	if _G.JoinerEnabled == true then
-		local loadingstring = "_G.Webhook = ".."'"..tostring(_G.Webhook).."'".." _G.Rarity = ".."'"..(_G.Rarity or "Secret").."'".." _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('https://raw.githubusercontent.com/wendelxjsh/Shinra-Hub-/refs/heads/main/Testando.lua'))()"
-		queue_on_teleport(tostring(loadingstring))
+	if _G.JoinerEnabled then
+		local loadingstring = "_G.JoinerEnabled = "..tostring(_G.JoinerEnabled).." _G.Webhook = '"..tostring(_G.Webhook).."' _G.Rarity = '"..(_G.Rarity or "Secret").."' _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('https://raw.githubusercontent.com/qWixxyLuau/FlamesHub/refs/heads/main/SAB_Joiner.lua'))()"
+		queue_on_teleport(loadingstring)
 		hop()
 	end
 end
