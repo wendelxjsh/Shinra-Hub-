@@ -33,13 +33,13 @@ local ThingsToCreate = {
 					["UIStroke"] = {
 						ClassName = "UIStroke",
 						Color = Color3.new(0, 0, 0),
-						Thickness = 3
+						Thickness = 1
 					},
 				},
 			},
 			["CREDITS"] = {
 				ClassName = "TextLabel",
-				Text = "Flames Hub Auto Joiner",
+				Text = "Rick Accounts - Hub Auto Joiner",
 				TextColor3 = Color3.new(1, 1, 1),
 				Font = Enum.Font.JosefinSans,
 				TextScaled = true,
@@ -49,7 +49,7 @@ local ThingsToCreate = {
 			},
 			["SERVER"] = {
 				ClassName = "TextLabel",
-				Text = "https://discord.gg/GVNYud4rNS",
+				Text = "https://discord.gg/Wzx2AdSTWs",
 				TextColor3 = Color3.new(1, 1, 1),
 				Font = Enum.Font.JosefinSans,
 				TextScaled = true,
@@ -91,20 +91,20 @@ function SendMessageEMBED(url, embed)
 	}
 
 	local data = {
-		["username"] = "🔥 Flames Hub Auto Joiner 🔥",
-		["avatar_url"] = "https://i.imgur.com/wkZ2t8J.png",
-		["content"] = "@everyone",
+		["username"] = "Rick Accounts Notify",
+		["avatar_url"] = "https://cdn.discordapp.com/attachments/1432538138793738240/1434343679878758513/roclas.gif?ex=6907fc26&is=6906aaa6&hm=17e71e57771bbd5f0618bec18f45b5c1fa3317d115514e4b493cb280cad85cd0&",
+		["content"] = "<@&1434398185547239626>",
 		["embeds"] = {
 			{
 				["title"] = embed.title,
 				["description"] = embed.description,
 				["color"] = embed.color,
 				["fields"] = embed.fields,
-				["image"] = { ["url"] = embed.banner or "https://i.imgur.com/VFh3yF2.png" },
-				["thumbnail"] = { ["url"] = embed.thumbnail or "https://i.imgur.com/wkZ2t8J.png" },
+				["image"] = { ["url"] = embed.banner or "https://cdn.discordapp.com/attachments/1372641866134061111/1434392469445021827/images.webp?ex=69082996&is=6906d816&hm=a1bb7a450f4902d5b6fd8082dbcc08d88c7c9a4abd010a91609b04e2abe17f2c&" },
+				["thumbnail"] = { ["url"] = embed.thumbnail or "https://cdn.discordapp.com/attachments/1432538138793738240/1434347936921292891/rickaccouhnts_copiar-1.png?ex=6908001d&is=6906ae9d&hm=d1adff004124b0b2fa0de957466b64ef7f1560d122c74351cc3c43f14ec612ca&" },
 				["footer"] = {
-					["text"] = embed.footer.text or "Flames Hub System",
-					["icon_url"] = embed.footer.icon or "https://i.imgur.com/wkZ2t8J.png"
+					["text"] = embed.footer.text or "Rick Accounts System",
+					["icon_url"] = embed.footer.icon or "https://cdn.discordapp.com/attachments/1432538138793738240/1434343499381346314/roclas.gif?ex=6907fbfb&is=6906aa7b&hm=5c13948fbde06f93b48a58ad1ff91792f8688ac35544ae52e2ccdcdd0d83f502&"
 				}
 			}
 		}
@@ -125,27 +125,27 @@ local serverId = game.JobId
 
 -- 🟣 Embed configurada
 local embed = {
-	["title"] = "🔥 FLAMES HUB - SAB AUTO JOINER 🔥",
-	["description"] = string.format("Servidor atual: **%d players**\nJob ID: `%s`\n\nSistema automático de conexão para servidores do **Flames Hub**!", totalPlayers, serverId),
-	["color"] = 15695665,
+	["title"] = "🌴 RICK ACCOUNTS - SAB AUTO JOINER 🌴",
+	["description"] = string.format("<:usernotity:1434396026428723281> **%d players**\nJob ID: `%s`\n\nTeleporte, Copie o Job Id e execute Em seu executor. Game: **Steal a Brainrots**!", totalPlayers, serverId),
+	["color"] = 16711680,
 	["fields"] = {
 		{
-			["name"] = "🐶 Brainrot Info",
-			["value"] = "```Procurando raridade...```",
+			["name"] = "<:brainrotnotify:1434396689195597955> Brainrot Info",
+			["value"] = "```Em busca de uma raridade...```",
 			["inline"] = false
 		},
 		{
-			["name"] = "☎ Join",
-			["value"] = "Entre pelo link:\n[Flames Hub Game](https://www.roblox.com/games/109253576074416/Flames-Hub-Joiner)\n```lua\nTeleportService:TeleportToPlaceInstance("..game.PlaceId..", \""..game.JobId.."\", LocalPlayer)\n```",
+			["name"] = "<:linknotify:1434395789794345091> Join",
+			["value"] = "Entrar pelo link:\n[Rick Accounts](https://www.roblox.com/games/109983668079237/Steal-a-Brainrot)\n```lua\nTeleportService:TeleportToPlaceInstance("..game.PlaceId..", \""..game.JobId.."\", LocalPlayer)\n```",
 			["inline"] = false
 		}
 	},
 	["footer"] = {
-		["text"] = "Feito com ❤️ por Flames Hub",
-		["icon"] = "https://i.imgur.com/wkZ2t8J.png"
+		["text"] = "Feito por <@1220178603858333818>",
+		["icon"] = "https://cdn.discordapp.com/attachments/1372641866134061111/1434397677331939358/f2029ead-8b1c-4242-b493-30c6e3881378.jpg?ex=69082e70&is=6906dcf0&hm=5f5f525aa8e2760cb601cb9229a5eca2b012c8d0921163c6445a8f5703c08a6c&"
 	},
-	["banner"] = "https://i.imgur.com/VFh3yF2.png",
-	["thumbnail"] = "https://i.imgur.com/wkZ2t8J.png"
+	["banner"] = "https://cdn.discordapp.com/attachments/1372641866134061111/1434392469445021827/images.webp?ex=69082996&is=6906d816&hm=a1bb7a450f4902d5b6fd8082dbcc08d88c7c9a4abd010a91609b04e2abe17f2c&",
+	["thumbnail"] = "https://cdn.discordapp.com/attachments/1432538138793738240/1434347936921292891/rickaccouhnts_copiar-1.png?ex=6908001d&is=6906ae9d&hm=d1adff004124b0b2fa0de957466b64ef7f1560d122c74351cc3c43f14ec612ca&"
 }
 
 local gui = game.CoreGui:WaitForChild("AutoJoiner")
@@ -221,7 +221,7 @@ while wait(1) do
 	button.BackgroundColor3 = tab[tostring(_G.JoinerEnabled)]
 
 	if _G.JoinerEnabled then
-		local loadingstring = "_G.JoinerEnabled = "..tostring(_G.JoinerEnabled).." _G.Webhook = '"..tostring(_G.Webhook).."' _G.Rarity = '"..(_G.Rarity or "Secret").."' _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('https://raw.githubusercontent.com/qWixxyLuau/FlamesHub/refs/heads/main/SAB_Joiner.lua'))()"
+		local loadingstring = "_G.JoinerEnabled = "..tostring(_G.JoinerEnabled).." _G.Webhook = '"..tostring(_G.Webhook).."' _G.Rarity = '"..(_G.Rarity or "Secret").."' _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('https://raw.githubusercontent.com/wendelxjsh/Shinra-Hub-/refs/heads/main/Testando.lua'))()"
 		queue_on_teleport(loadingstring)
 		hop()
 	end
