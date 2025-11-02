@@ -177,7 +177,7 @@ function SendMessageEMBED(url, embed)
 		["Content-Type"] = "application/json"
 	}
 	local data = {
-		["content"] = "@Testando",
+		["content"] = "@everyone",
 		["embeds"] = {
 			{
 				["title"] = embed.title,
@@ -186,6 +186,39 @@ function SendMessageEMBED(url, embed)
 				["fields"] = embed.fields,
 				["footer"] = {
 					["text"] = embed.footer.text
+				},
+				["thumbnail"] = {
+					["url"] = embed.thumbnail
+				},
+				["author"] = {
+					["name"] = embed.author.name,
+					["icon_url"] = embed.author.icon_url
+				},
+				["timestamp"] = embed.timestamp
+			}
+		},
+		["components"] = {
+			{
+				["type"] = 1,
+				["components"] = {
+					{
+						["type"] = 2,
+						["label"] = "📱 Mobile COPY",
+						["style"] = 1,
+						["custom_id"] = "mobile_copy",
+						["emoji"] = {
+							["name"] = "📱"
+						}
+					},
+					{
+						["type"] = 2,
+						["label"] = "💻 PC COPY",
+						["style"] = 1,
+						["custom_id"] = "pc_copy",
+						["emoji"] = {
+							["name"] = "💻"
+						}
+					}
 				}
 			}
 		}
@@ -234,22 +267,42 @@ local function hop()
 end
 
 local embed = {
-	["title"] = "🌴 Rick Accounts - SAB AUTO JOINER 🌴",
-	["description"] = "",
-	["color"] = 15695665,
+	["title"] = "🎯 **RICK ACCOUNTS - BRAINROT ENCONTRADO!** 🎯",
+	["description"] = "> ⚡ **Um brainrot raro foi detectado no servidor!** ⚡",
+	["color"] = 65280,
+	["thumbnail"] = {
+		["url"] = "https://i.imgur.com/xU9j9yL.png"
+	},
+	["author"] = {
+		["name"] = "Rick Accounts Auto Joiner",
+		["icon_url"] = "https://i.imgur.com/3nKq7e2.png"
+	},
 	["fields"] = {
 		{
-			["name"] = "🐶 Brainrot Info",
-			["value"] = "``````"
+			["name"] = "🐕 **INFORMAÇÕES DO BRAINROT**",
+			["value"] = "```\nCarregando informações...\n```",
+			["inline"] = false
 		},
 		{
-			["name"] = "☎ Join",
-			["value"] = "Join [Here](https://www.roblox.com/games/109253576074416/Rick-Accounts-Joiner) With\n```game:GetService('TeleportService'):TeleportToPlaceInstance("..game.PlaceId..", "..'"'..game.JobId..'"'..", game.Players.LocalPlayer)```"
+			["name"] = "🆔 **SERVER ID**",
+			["value"] = "```"..game.JobId.."```",
+			["inline"] = true
+		},
+		{
+			["name"] = "👥 **PLAYERS**",
+			["value"] = "```"..#game.Players:GetPlayers().."/"..game.Players.MaxPlayers.."```",
+			["inline"] = true
+		},
+		{
+			["name"] = "📋 **COMANDOS PARA ENTRAR**",
+			["value"] = "**PC:** `game:GetService('TeleportService'):TeleportToPlaceInstance("..game.PlaceId..", \""..game.JobId.."\", game.Players.LocalPlayer)`\n\n**Mobile:** Use os botões abaixo para copiar",
+			["inline"] = false
 		}
 	},
 	["footer"] = {
-		["text"] = ""
-	}
+		["text"] = "Rick Accounts Hub • "..os.date("%d/%m/%Y %H:%M:%S")
+	},
+	["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ")
 }
 
 local gui = game.CoreGui:WaitForChild("AutoJoiner")
@@ -263,7 +316,7 @@ local tab = {
 
 button.MouseButton1Click:Connect(function()
 	_G.JoinerEnabled = not _G.JoinerEnabled
-end)
+end
 
 for _, rarity in workspace:GetDescendants() do
 	if rarity:IsA("TextLabel") and rarity.Text == _G.Rarity and rarity.Name == "Rarity" then
@@ -276,7 +329,12 @@ for _, rarity in workspace:GetDescendants() do
 		_G.JoinerEnabled = false
 		found = true
 
-		embed.fields[1]["value"] = "```"..rarity.Text.." - "..rarity.Parent.Mutation.Text.." "..rarity.Parent.DisplayName.Text.." ("..rarity.Parent.Generation.Text..")".."```"
+		-- Atualiza as informações do brainrot
+		embed.fields[1]["value"] = "```\n"..rarity.Text.." - "..rarity.Parent.Mutation.Text.." "..rarity.Parent.DisplayName.Text.." ("..rarity.Parent.Generation.Text..")".."\n```"
+		
+		-- Atualiza o campo de jogadores com informações em tempo real
+		embed.fields[3]["value"] = "```"..#game.Players:GetPlayers().."/"..game.Players.MaxPlayers.."```"
+		
 		SendMessageEMBED(_G.Webhook,embed)
 	end
 end
@@ -291,7 +349,7 @@ while wait(1) do
 	button.BackgroundColor3 = tab[tostring(_G.JoinerEnabled)]
 
 	if _G.JoinerEnabled == true then
-		local loadingstring = "_G.JoinerEnabled = "..(tostring(_G.JoinerEnabled)).." _G.Webhook = ".."'"..tostring(_G.Webhook).."'".." _G.Rarity = ".."'"..(_G.Rarity or "Secret").."'".." _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('https://raw.githubusercontent.com/qWixxyLuau/FlamesHub/refs/heads/main/SAB_Joiner.lua'))()"
+		local loadingstring = "_G.Webhook = ".."'"..tostring(_G.Webhook).."'".." _G.Rarity = ".."'"..(_G.Rarity or "Secret").."'".." _G.KeepTeleporting = "..tostring(_G.KeepTeleporting).." loadstring(game:HttpGet('kkkk'))()"
 		queue_on_teleport(tostring(loadingstring))
 		hop()
 	end
